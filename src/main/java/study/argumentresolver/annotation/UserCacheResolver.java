@@ -24,11 +24,16 @@ public class UserCacheResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.hasParameterAnnotation(UserCache.class) && parameter.getGenericParameterType().equals(User.class);
+        return parameter.hasParameterAnnotation(UserCache.class)
+                && parameter.getGenericParameterType().equals(User.class);
+//        return true;
     }
 
     @Override
-    public User resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
+    public User resolveArgument(MethodParameter parameter,
+                                ModelAndViewContainer mavContainer,
+                                NativeWebRequest webRequest,
+                                WebDataBinderFactory binderFactory) {
         HttpServletRequest req = webRequest.getNativeRequest(HttpServletRequest.class);
         String sessionName = parameter.getParameterAnnotation(UserCache.class).value();
 
