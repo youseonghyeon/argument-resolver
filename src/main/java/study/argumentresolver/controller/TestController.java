@@ -24,7 +24,7 @@ public class TestController {
         return user;
     }
 
-    @GetMapping("/set")
+    @PostMapping("/set")
     public void newCache(@RequestBody User user, HttpServletResponse response) {
         String cacheKey = UUID.randomUUID().toString();
         userCacheStore.put(cacheKey, user);
