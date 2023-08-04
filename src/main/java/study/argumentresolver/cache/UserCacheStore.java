@@ -9,13 +9,13 @@ import java.util.Map;
 @Component
 public class UserCacheStore {
 
-    private Map<String, User> userMap = new HashMap<>();
+    private final Map<String, User> cache = new HashMap<>();
 
     public User get(String key) {
-        return userMap.get(key);
+        return cache.get(key);
     }
 
     public void put(String key, User value) {
-        userMap.put(key, value);
+        cache.put(key, value);
     }
 }
