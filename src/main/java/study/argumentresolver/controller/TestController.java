@@ -25,11 +25,11 @@ public class TestController {
     }
 
     @PostMapping("/set")
-    public void newCache(@RequestBody User user, HttpServletResponse response) {
+    public String newCache(@RequestBody User user, HttpServletResponse response) {
         String cacheKey = UUID.randomUUID().toString();
         userCacheStore.put(cacheKey, user);
-
         Cookie cookie = new Cookie("MY-SESSION-ID", cacheKey);
         response.addCookie(cookie);
+        return "SUCCESS";
     }
 }
